@@ -1,23 +1,26 @@
 import './output.css';
 
+import Split from 'react-split'
+
 import EditorComponent from './components/EditorComponent';
 import ChatSidebar from './components/ChatSidebar';
 
 function App() {
   return (
-    <div className="flex h-screen">
-      <div className="flex-1 p-6 overflow-y-scroll">
-
-        {/* Editor */}
+    <Split
+      className="flex h-screen"
+      sizes={[70, 30]} // initial ratio
+      minSize={300}
+      gutterSize={6}
+      direction="horizontal"
+    >
+      <div className="p-4 overflow-auto">
         <EditorComponent />
-        
       </div>
-
-      {/* Sidebar */}
-      <aside className="w-80 border-l p-4 bg-white">
+      <div className="p-4 border-l overflow-auto bg-white">
         <ChatSidebar />
-      </aside>
-    </div>
+      </div>
+    </Split>
   );
 }
 

@@ -2,8 +2,8 @@
 
 export default function ChatSidebar() {
         return (
-                <div>
-                        
+                <div className="h-full w-full">
+
                 </div>
         )
 }
