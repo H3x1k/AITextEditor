@@ -1,0 +1,9 @@
+.gutter {
+  background-color: #e5e7eb; /* Tailwind's gray-200 */
+  cursor: col-resize;
+  width: 6px;
+}
+
+.gutter:hover {
+  background-color: #9ca3af; /* Tailwind's gray-400 */
+}
