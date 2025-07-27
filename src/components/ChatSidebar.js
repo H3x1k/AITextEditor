@@ -1,6 +1,27 @@
+import { useState } from 'react';
+
+import OpenAI from "openai";
+
+
+const API_KEY = "";
+
+const client = new OpenAI({apiKey: API_KEY, dangerouslyAllowBrowser: true});
 
 
 export default function ChatSidebar() {
+
+        const [response, setResponse] = useState("");
+
+
+        const handleChat = async () => {
+                const res = await client.responses.create({
+                        model: "o4-mini",
+                        input: "Write a one-sentence bedtime story about a unicorn.",
+                });
+
+                //const data = await res.json();
+                setResponse(res.output_text);
+        };
 
         return (
 
@@ -11,7 +32,7 @@ export default function ChatSidebar() {
                         <div className="flex-1 flex flex-col">
 
                                 <div className="flex-1">
-
+                                        <div>{response}</div>
                                 </div>
 
                                 <div className="flex flex-row">
@@ -22,6 +43,7 @@ export default function ChatSidebar() {
                                         />
 
                                         {/*<button className="absolute"></button> mic button*/}
+                                        <button onClick={handleChat} className='w-full h-full'></button>
 
                                 </div>
 
